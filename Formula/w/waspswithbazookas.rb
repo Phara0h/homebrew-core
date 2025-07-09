@@ -5,7 +5,11 @@ class Waspswithbazookas < Formula
   sha256 "4431aab8993b1b7bb0cd447b9d6c076e1439ebe36fb3d28b15d2640e0a8b1290"
   license "GPL-2.0-or-later"
 
+  depends_on "pkgconf" => :build
   depends_on "rust" => :build
+  on_linux do
+    depends_on "openssl@3"
+  end
 
   def install
     system "cargo", "install", *std_cargo_args
